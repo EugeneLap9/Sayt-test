@@ -1,0 +1,340 @@
+/* =========================================================
+   Meta Church — стили
+   Цвета и размеры сняты с макета Figma (Desktop 1280 / Tablet 800 / Mobile 375)
+   ========================================================= */
+
+:root {
+  /* Шрифты. Заголовки в макете набраны TT Travels Next (у сайта стоит Trial-версия,
+     её нельзя использовать на опубликованном сайте без лицензии).
+     Временно — бесплатный Unbounded. Если купите лицензию TT Travels Next —
+     положите файлы в /assets/fonts и поменяйте --font-display. */
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-script: "Caveat", "Comic Sans MS", cursive;
+
+  --c-text: #151515;
+  --c-muted: #52565a;
+  --c-subtle: #9a9a9a;
+  --c-meta: #717c83;
+  --c-accent: #e95000;
+  --c-accent-hover: #cf4700;
+  --c-bg: #fafafa;
+  --c-surface: #ffffff;
+  --c-line: #ececec;
+  --c-chip: #f3f3f3;
+
+  --c-blue: #155dfc;  --c-blue-bg: #dbeafe;
+  --c-green: #00a63e; --c-green-bg: #dcfce7;
+  --c-pink: #e60076;  --c-pink-bg: #fce7f3;
+
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+
+  --hero-bg: linear-gradient(90deg, #cad8de 0%, #e0e7ea 27%, #f4f5f6 52%, #eef2f4 80%, #ebf1f4 100%);
+  --container: 1152px;
+  --gutter: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+.about__photo, .online__phones { width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+:focus-visible { outline: 2px solid var(--c-blue); outline-offset: 3px; border-radius: 6px; }
+
+.skip {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  background: var(--c-text); color: #fff; padding: 10px 16px; border-radius: var(--radius-s);
+}
+.skip:focus { top: 16px; }
+
+.container { max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+.muted { color: var(--c-muted); }
+
+.only-mobile { display: none; }
+
+/* ---------- Типографика ---------- */
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font: 500 15px/1.2 var(--font-body);
+  padding: 12px 16px;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+  white-space: nowrap;
+}
+.btn--lg { font-size: 17px; padding: 18px 30px; border-radius: 12px; }
+.btn--block { display: flex; width: 100%; }
+.btn--dark { background: #000; color: #fff; }
+.btn--dark:hover { background: #2a2a2a; }
+.btn--accent { background: var(--c-accent); color: #fff; }
+.btn--accent:hover { background: var(--c-accent-hover); }
+.btn--light { background: var(--c-surface); color: var(--c-text); }
+.btn--light:hover { background: #f1f1f1; }
+.btn--outline { background: var(--c-surface); border-color: #d2d2d2; color: var(--c-text); font-size: 14px; padding: 10px 16px; }
+.btn--outline:hover { border-color: var(--c-blue); }
+.btn__icon { width: 16px; height: 19px; color: var(--c-blue); flex: none; }
+
+/* ---------- Иконки в кружке ---------- */
+.ico {
+  display: inline-grid; place-items: center; flex: none;
+  width: 48px; height: 48px; border-radius: 50%;
+}
+.ico svg { width: 24px; height: 24px; }
+.ico--blue  { background: var(--c-blue-bg);  color: var(--c-blue); }
+.ico--green { background: var(--c-green-bg); color: var(--c-green); }
+.ico--pink  { background: var(--c-pink-bg);  color: var(--c-pink); }
+.ico--pin svg { width: 18px; height: 22px; }
+
+.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-l);
+}
+
+/* ---------- Плашка трансляции ---------- */
+.live-bar {
+  display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 16px;
+  background: var(--c-accent); color: #fff;
+  font-size: 15px; font-weight: 500; text-align: center;
+}
+.live-bar[hidden] { display: none; }
+.live-bar__dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: pulse 1.6s ease-in-out infinite; }
+.live-bar__link { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+@keyframes pulse { 50% { opacity: .35; } }
+
+/* ---------- Шапка ---------- */
+.header {
+  position: absolute; left: 0; right: 0; z-index: 10;
+  padding: 18px var(--gutter) 0;
+}
+.live-bar:not([hidden]) + .header { position: relative; margin-bottom: -86px; background: var(--hero-bg); }
+.header__inner {
+  max-width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 18px 10px 18px;
+  background: rgba(255,255,255,.72);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 2px solid #fff;
+  border-radius: 20px;
+}
+.logo { display: inline-flex; align-items: center; gap: 8px; }
+.logo__mark { width: 35px; height: 50px; color: #000; }
+.logo__text { font: 600 16px/1.05 var(--font-body); }
+.nav { margin-left: auto; display: flex; gap: 22px; font-weight: 500; font-size: 15px; }
+.nav a:hover { color: var(--c-accent); }
+.socials { display: flex; gap: 28px; align-items: center; }
+.socials a { color: var(--c-subtle); display: inline-flex; }
+.socials a:hover { color: var(--c-text); }
+.socials svg { width: 20px; height: 18px; }
+.socials--header { margin-left: 36px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--hero-bg);
+  padding: 186px 0 140px;
+  text-align: center;
+}
+.hero__inner { display: flex; flex-direction: column; align-items: center; }
+.badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 4px 16px 4px 4px;
+  background: #fff; border-radius: 999px;
+  font-weight: 500; font-size: 15px;
+}
+.badge__faces { display: flex; }
+.badge__faces img { width: 42px; height: 42px; border-radius: 50%; }
+.badge__faces img + img { margin-left: -11px; }
+.badge__script { font-family: var(--font-script); font-weight: 600; font-size: 19px; color: var(--c-accent); margin-left: 4px; }
+
+.hero__title {
+  margin-top: 30px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(38px, 5.6vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  max-width: 16ch;
+}
+.hero__meta { color: var(--c-meta); }
+.hero__lead { margin-top: 28px; max-width: 40ch; font-size: 22px; line-height: 1.5; color: var(--c-muted); }
+.hero__actions { margin-top: 44px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ---------- Секции ---------- */
+.section { padding: 96px 0; }
+.section--first { padding-top: 74px; padding-bottom: 0; }
+.section__head { text-align: center; margin-bottom: 40px; }
+.section__head .muted { margin-top: 14px; font-weight: 500; }
+
+/* Воскресное собрание */
+.sunday {
+  display: grid; grid-template-columns: 1fr auto; gap: 40px;
+  padding: 28px 64px 28px 28px;
+  border-color: transparent;
+}
+.sunday__intro { display: flex; gap: 16px; align-items: flex-start; }
+.sunday__intro .muted { margin-top: 8px; max-width: 30ch; font-weight: 500; }
+.sunday__times { display: grid; grid-template-columns: repeat(2, 220px); gap: 52px; }
+.slot__time { font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1; letter-spacing: -0.02em; }
+.slot__name { margin-top: 12px; font-weight: 500; color: var(--c-muted); }
+.slot__note { font-size: 12px; color: var(--c-subtle); font-weight: 500; padding-left: 10px; position: relative; }
+.slot__note::before { content: "•"; position: absolute; left: 0; }
+.slot__note--accent { color: var(--c-accent); padding-left: 0; }
+.slot__note--accent::before { content: "* "; position: static; }
+.chip {
+  margin-top: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 12px; border: 1px solid #d2d2d2; border-radius: var(--radius-s);
+  font-size: 14px; font-weight: 500; background: #fff;
+}
+.chip:hover { border-color: var(--c-accent); }
+.chip__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-accent); }
+
+/* О церкви */
+.about__inner { display: grid; grid-template-columns: 530px minmax(0, 1fr); gap: 70px; align-items: start; }
+.about__photo { border-radius: var(--radius-m); }
+.about__lead { margin-top: 20px; font-weight: 500; max-width: 50ch; }
+.address { margin-top: 24px; padding: 18px 18px 16px; }
+.address__row { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+.address__label { font-size: 14px; font-weight: 500; color: var(--c-muted); }
+.address__value { margin-top: 2px; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.2; }
+
+/* События */
+.events { padding-top: 40px; }
+.events__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.event { padding: 16px 20px 22px; }
+.event__title { margin-top: 18px; margin-bottom: 18px; max-width: 12ch; }
+.meta { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--c-muted); }
+.meta + .meta { margin-top: 10px; }
+.meta svg { width: 13px; height: 13px; flex: none; }
+
+/* Галерея (бегущая лента) */
+.gallery { background: #fff; padding: 32px 0; overflow: hidden; }
+.gallery__track { display: flex; width: max-content; animation: marquee 60s linear infinite; }
+.gallery:hover .gallery__track { animation-play-state: paused; }
+.gallery__list { display: flex; gap: 16px; padding-right: 16px; }
+.gallery__list img { width: 305px; height: 410px; object-fit: cover; border-radius: var(--radius-m); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Онлайн */
+.online { background: #fff; padding-bottom: 40px; }
+.online__inner { display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: 48px; align-items: center; padding-bottom: 40px; border-bottom: 1px solid var(--c-line); }
+.online__grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.social { display: flex; flex-direction: column; padding: 18px 18px 16px; border-radius: 20px; height: 100%; transition: border-color .15s ease; }
+.social:hover { border-color: #c9c9c9; }
+.social__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+.social__desc { margin-top: 10px; font-size: 14px; font-weight: 500; }
+.social__arrow { margin-top: 14px; width: 46px; height: 46px; border-radius: 50%; background: var(--c-chip); display: grid; place-items: center; color: var(--c-muted); }
+.social__arrow svg { width: 16px; height: 16px; }
+
+/* Подвал */
+.footer { background: #fff; padding: 40px 0 56px; }
+.footer__inner { display: grid; grid-template-columns: 1fr 236px 300px; gap: 40px; align-items: start; }
+.footer__brand .muted { margin-top: 8px; font-weight: 500; }
+.footer__brand .socials { margin-top: 56px; }
+.footer__title { font-weight: 600; margin-top: 4px; margin-bottom: 22px; }
+.footer__col .muted { font-weight: 500; }
+.address--footer { margin-top: 0; }
+
+/* =========================================================
+   Планшет
+   ========================================================= */
+@media (max-width: 1100px) {
+  :root { --gutter: 40px; }
+  .nav { display: none; }
+  .socials--header { margin-left: auto; }
+  .sunday { grid-template-columns: 1fr; padding: 28px; }
+  .sunday__times { grid-template-columns: repeat(2, 1fr); }
+  .about__inner { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .about__photo { width: 100%; max-width: 720px; }
+  .online__inner { grid-template-columns: minmax(0, 1fr); }
+  .online__phones { width: 100%; max-width: 560px; margin: 0 auto; }
+  .footer__inner { grid-template-columns: 1fr 1fr; }
+  .address--footer { grid-column: 1 / -1; max-width: 420px; }
+}
+
+/* =========================================================
+   Мобильный
+   ========================================================= */
+@media (max-width: 700px) {
+  :root { --gutter: 20px; }
+  .only-desktop { display: none; }
+  .only-mobile { display: inline; }
+  .socials--header { display: none; }
+  .header { padding-top: 20px; }
+  .header__inner { justify-content: space-between; padding: 10px 10px 10px 18px; }
+  .header__cta { margin-left: auto; padding: 12px 16px; }
+  .live-bar:not([hidden]) + .header { margin-bottom: -94px; }
+
+  .hero { padding: 144px 0 60px; }
+  .badge { font-size: 14px; text-align: left; padding-right: 14px; }
+  .badge__text { display: flex; flex-direction: column; line-height: 1.15; }
+  .badge__script { margin-left: 0; font-size: 18px; }
+  .hero__title { font-size: clamp(34px, 11.8vw, 48px); max-width: 11ch; }
+  .h2 { font-size: 30px; }
+  .hero__lead { font-size: 17px; }
+  .hero__actions { flex-direction: column; width: 100%; gap: 12px; }
+  .hero__actions .btn { width: 100%; }
+
+  .section { padding: 64px 0; }
+  .section--first { padding-top: 80px; padding-bottom: 0; }
+  .sunday { padding: 32px; }
+  .sunday__intro { flex-direction: column; gap: 20px; }
+  .sunday__times { grid-template-columns: 1fr; gap: 24px; }
+  .slot__time { font-size: 40px; }
+
+  .about__text { text-align: center; }
+  .about .address { text-align: left; }
+  .about__lead { margin-left: auto; margin-right: auto; }
+
+  .events { padding-top: 24px; }
+  .events__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .gallery__list img { width: 240px; height: 322px; }
+  .gallery__list { gap: 10px; padding-right: 10px; }
+
+  .online__text { text-align: center; }
+  .online__grid { grid-template-columns: 1fr; text-align: left; }
+
+  .footer__inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .footer__brand .socials { margin-top: 32px; }
+  .address--footer { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gallery__track { animation: none; }
+  .gallery { overflow-x: auto; }
+  .live-bar__dot { animation: none; }
+}
